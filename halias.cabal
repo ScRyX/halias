@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 5c9f048f81f8c455128b3c4fb729c557e7512b10199eb1baf7c2851ce8865618
+-- hash: eeb5248c17b92e8e663b7b25681cf2353ff1dc3fc263bae3152273e1df4ffe40
 
 name:           halias
 version:        0.1.0.0
@@ -28,12 +28,14 @@ source-repository head
 library
   exposed-modules:
       Game
+      Rand
   other-modules:
       Paths_halias
   hs-source-dirs:
       src
   build-depends:
       base >=4.7 && <5
+    , random
     , text
   default-language: Haskell2010
 
