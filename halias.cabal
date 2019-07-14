@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: eeb5248c17b92e8e663b7b25681cf2353ff1dc3fc263bae3152273e1df4ffe40
+-- hash: cb8e21e0a9ee5c8511a82e1c6bfdd88fe6f370d6c866f258af9a8fc977a098eb
 
 name:           halias
 version:        0.1.0.0
@@ -36,6 +36,7 @@ library
   build-depends:
       base >=4.7 && <5
     , random
+    , split
     , text
   default-language: Haskell2010
 
