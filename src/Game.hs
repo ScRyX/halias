@@ -22,7 +22,7 @@ type GameState = [Card]
 -- TODO check for duplicates in the wordSet and fail if there's < nTotal distinct words
 
 defaultProps :: GameProps
-defaultProps = GameProps { nBlue = 3, nRed = 4, nAssassin = 1, nTotal = 10 }
+defaultProps = GameProps { nBlue = 7, nRed = 8, nAssassin = 1, nTotal = 25}
 
 chooseWords :: GameProps -> [T.Text] -> IO [T.Text]
 chooseWords props = chooseN (nTotal props)

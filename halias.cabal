@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: cb8e21e0a9ee5c8511a82e1c6bfdd88fe6f370d6c866f258af9a8fc977a098eb
+-- hash: 9f0aa2ad992871253dcc143de161c80fa322d5c96606acee5d140c966c2ed85f
 
 name:           halias
 version:        0.1.0.0
@@ -29,12 +29,16 @@ library
   exposed-modules:
       Game
       Rand
+      View
   other-modules:
       Paths_halias
   hs-source-dirs:
       src
   build-depends:
       base >=4.7 && <5
+    , blaze-html
+    , blaze-markup
+    , bytestring
     , random
     , split
     , text

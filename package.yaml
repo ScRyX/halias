@@ -28,6 +28,9 @@ library:
   - text
   - random
   - split
+  - blaze-html
+  - blaze-markup
+  - bytestring
 
 executables:
   halias-exe:
