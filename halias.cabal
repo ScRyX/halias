@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 9f0aa2ad992871253dcc143de161c80fa322d5c96606acee5d140c966c2ed85f
+-- hash: 55c036e80fd00958399900edc0a64f0c9f6c59c1da4f11a9c5ff879e02d18d08
 
 name:           halias
 version:        0.1.0.0
@@ -39,6 +39,7 @@ library
     , blaze-html
     , blaze-markup
     , bytestring
+    , lens
     , random
     , split
     , text

@@ -7,10 +7,11 @@ import Data.ByteString.Lazy as L
 import Data.List.Split (divvy)
 import Text.Blaze.Html5 as H
 import Text.Blaze.Renderer.Utf8
+import Data.Text as T (concat, pack)
 --import qualified Text.Blaze.Html5.Attributes as A
 
 cardView :: Card -> H.Html
-cardView c = H.td (toHtml $ word c)
+cardView c = H.td (toHtml $ T.concat [word c, "[", T.pack $ show (typ c), "]"])
 
 cardRow :: [Card] -> H.Html
 cardRow cs = H.tr $ forM_ cs cardView
