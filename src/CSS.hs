@@ -17,10 +17,13 @@ designCss =
       color white
       background red
     element ".beigeCard" ? do
-      color white
+      color black
       background beige
     element ".blackCard" ? do
       color white
       background black
---    element "#gmail" ? marginLeft (px 10)
+    element ".card" ? do
+      padding (px 10) (px 10) (px 10) (px 10)
+      margin  (px 10) (px 10) (px 10) (px 10)
+      textAlign Clay.center
 

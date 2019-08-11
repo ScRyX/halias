@@ -15,16 +15,16 @@ import CSS (designCss)
 
 cardClass :: Card -> AttributeValue
 cardClass c = case typ c of
-  Blue     -> "blueCard"
-  Red      -> "redCard"
-  Neutral  -> "beigeCard"
-  Assassin -> "blackCard"
+  Blue     -> "blueCard card col-md-2"
+  Red      -> "redCard card col-md-2"
+  Neutral  -> "beigeCard card col-md-2"
+  Assassin -> "blackCard card col-md-2"
 
 cardView :: Card -> H.Html
-cardView c = H.td ! A.class_ (cardClass c) $ toHtml (T.concat [word c, "[", T.pack $ show (typ c), "]"])
+cardView c = H.div ! A.class_ (cardClass c) $ toHtml (T.concat [word c, "[", T.pack $ show (typ c), "]"])
 
 cardRow :: [Card] -> H.Html
-cardRow cs = H.tr $ forM_ cs cardView
+cardRow cs = H.div ! A.class_ "row" $ forM_ cs cardView
 
 pet = preEscapedText
 
@@ -33,13 +33,13 @@ stateView s =
   H.docTypeHtml $ do
     H.head $ do
       H.title "h-Alias v.0.0.1"
-      link ! A.href "//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" ! A.rel  "stylesheet" ! A.media "screen"
+      link ! A.href "https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" ! A.rel "stylesheet" ! A.media "screen"
       style $ pet $ LT.toStrict designCss
-    H.body $ do
-      H.p "Here are the cards:"
-      H.table $ forM_ (divvy 5 5 s) cardRow
-      script ! A.src "//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" $ mempty
-      script ! A.src "//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js" $ mempty
+    H.body
+      H.div ! A.class_ "container" $ do
+        H.table $ forM_ (divvy 5 5 s) cardRow
+        script ! A.src "https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" $ mempty
+        script ! A.src "https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js" $ mempty
 
 showStateHtml :: H.Html -> L.ByteString
 showStateHtml = renderHtml

@@ -1,5 +1,6 @@
 module Rand
-    ( chooseN
+    ( randSort
+    , chooseN
     ) where
 
 import System.Random
@@ -19,3 +20,7 @@ chooseN n xs = do
   g <- newStdGen
   return $ randSublist g n xs
 
+randSort :: [a] -> IO [a]
+randSort xs = do
+  g <- newStdGen
+  return $ snd <$> sortBy (\(a, _) (b, _) -> compare a b) (zip (randomInts g) xs)

@@ -8,7 +8,7 @@ module Game where
 
 import qualified Data.Text as T (Text, lines)
 import Data.Text.IO as TIO (readFile)
-import Rand (chooseN)
+import Rand (randSort, chooseN)
 import Data.List.Split (splitPlaces)
 import Control.Lens
 
@@ -35,12 +35,14 @@ chooseWords props = chooseN (props^.nTotal)
 readWords :: IO [T.Text]
 readWords = T.lines <$> TIO.readFile "resources/words.txt"
 
+-- assign a random number to each card, sort, and then assign colors from the first
+
 initState :: GameProps -> IO GameState
 initState props = do
   allWords <- readWords
   gameWords <- chooseWords props allWords
   let [blue, red, black, other] = splitPlaces [props^.nBlue, props^.nRed, props^.nAssassin, props^.nOther] gameWords
-  return $ concat
+  randSort $ concat
     [
       (\w -> Card {word = w, typ = Blue, state = Unpicked}) <$> blue
     , (\w -> Card {word = w, typ = Red, state = Unpicked}) <$> red
