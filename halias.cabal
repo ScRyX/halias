@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 8b0100273acb3ff815742d7004e48649008c3e30742f0d875bac8b648db88d5e
+-- hash: d2bcab4b4ee9c00bcb56085ff2fcf85ab8cf31446c0a2c3a80cb0af0ebef7874
 
 name:           halias
 version:        0.1.0.0
@@ -27,6 +27,7 @@ source-repository head
 
 library
   exposed-modules:
+      Api
       CSS
       Game
       Rand
@@ -43,6 +44,7 @@ library
     , clay
     , lens
     , random
+    , scotty
     , split
     , text
   default-language: Haskell2010

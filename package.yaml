@@ -33,6 +33,7 @@ library:
   - bytestring
   - lens
   - clay
+  - scotty
 
 executables:
   halias-exe:
