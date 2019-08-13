@@ -34,6 +34,7 @@ library:
   - lens
   - clay
   - scotty
+  - containers
 
 executables:
   halias-exe:

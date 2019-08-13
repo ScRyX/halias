@@ -3,6 +3,7 @@ module View where
 
 import Game
 import Control.Monad (forM_)
+import Control.Lens ((^.))
 import Data.ByteString.Lazy as L
 import Data.List.Split (divvy)
 import Text.Blaze.Html5 as H
@@ -28,16 +29,17 @@ cardRow cs = H.div ! A.class_ "row" $ forM_ cs cardView
 
 pet = preEscapedText
 
-stateView :: GameState -> H.Html
-stateView s =
+stateView :: GameState -> String -> H.Html
+stateView s label =
   H.docTypeHtml $ do
     H.head $ do
       H.title "h-Alias v.0.0.1"
       link ! A.href "https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" ! A.rel "stylesheet" ! A.media "screen"
       style $ pet $ LT.toStrict designCss
-    H.body $
+    H.body $ do
+      H.h1 $ H.strong $ toHtml label 
       H.div ! A.class_ "container" $ do
-        H.table $ forM_ (divvy 5 5 s) cardRow
+        H.table $ forM_ (divvy 5 5 $ s ^. cards) cardRow
         script ! A.src "https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" $ mempty
         script ! A.src "https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js" $ mempty
 

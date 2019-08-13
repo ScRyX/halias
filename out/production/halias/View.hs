@@ -3,6 +3,7 @@ module View where
 
 import Game
 import Control.Monad (forM_)
+import Control.Lens ((^.))
 import Data.ByteString.Lazy as L
 import Data.List.Split (divvy)
 import Text.Blaze.Html5 as H
@@ -37,7 +38,7 @@ stateView s =
       style $ pet $ LT.toStrict designCss
     H.body $
       H.div ! A.class_ "container" $ do
-        H.table $ forM_ (divvy 5 5 s) cardRow
+        H.table $ forM_ (divvy 5 5 $ s ^. cards) cardRow
         script ! A.src "https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" $ mempty
         script ! A.src "https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js" $ mempty
 

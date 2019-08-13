@@ -6,4 +6,4 @@ import Data.IORef
 import Api
 
 main :: IO ()
-main = runCounter
+main = runApi 
