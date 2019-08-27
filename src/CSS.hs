@@ -1,15 +1,20 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-module CSS (designCss) where
+module CSS
+  ( designCss
+  ) where
 
-import Clay
-import Data.Text.Lazy
-import Clay.Color
+import           Clay
+import           Clay.Color
+import           Data.Text.Lazy
 
 designCss :: Text
 designCss =
   render $ do
     body ? minHeight (px 2000)
+    element ".grayCard" ? do
+      color white
+      background gray
     element ".blueCard" ? do
       color white
       background blue
@@ -24,6 +29,5 @@ designCss =
       background black
     element ".card" ? do
       padding (px 10) (px 10) (px 10) (px 10)
-      margin  (px 10) (px 10) (px 10) (px 10)
+      margin (px 10) (px 10) (px 10) (px 10)
       textAlign Clay.center
-

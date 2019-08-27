@@ -1,10 +1,10 @@
 module Rand
-    ( randSort
-    , chooseN
-    ) where
+  ( randSort
+  , chooseN
+  ) where
 
-import System.Random
-import Data.List
+import           Data.List
+import           System.Random
 
 randInt :: IO Int
 randInt = fst . next <$> getStdGen
